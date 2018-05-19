@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>我的订单</title>
+    <link rel="stylesheet" type="text/css" href="css/shopcar.css">
+    <script type="text/javascript" src="js/auto-size.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+
+    <link type="text/css" href="css/css.css" rel="stylesheet" />
+
+ <script type="text/javascript">  
+    //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com  
+    //stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari  
+    if(("standalone" in window.navigator) && window.navigator.standalone){  
+        var noddy, remotes = false;  
+        document.addEventListener('click', function(event) {  
+            noddy = event.target;
+            while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {  
+                noddy = noddy.parentNode;  
+            }  
+            if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))  
+            {  
+                event.preventDefault();  
+                document.location.href = noddy.href;  
+            }  
+        },false);  
+    }  
+  </script> 
+    
+</head>
+
+<body>
+
+<!--网页头部栏-->
+    <div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1"><a  href='javascript:window.history.go(-1)'><</a></td>
+            <td width="80%" class="nav_title">我的订单</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+    </div>
+    
+
+
+    
+        <!--<div class="logo"></div>
+        <div class="main">
+            <table width="100%" border="0" cellspacing="0" class="main1">
+                
+                <tr>
+                    <td class="text"><input type="text/css" class="text1" id="orderusername" placeholder="卖家姓名"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table width="100%" border="0" cellspacing="0" class="main1">
+                <tr>
+                    <td class="text"><input type="text/css" class="text1" id="orderphone" placeholder="卖家电话"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table width="100%" border="0" cellspacing="0" class="main1">
+                <tr>
+                    <td class="text"><input type="text/css" class="text1" id="orderqq" placeholder="卖家QQ号"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table width="100%" border="0" cellspacing="0" class="main1">
+                <tr>
+                    <td class="text"><input type="text/css" class="text1" id="orderlocation" placeholder="卖家位置"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table width="100%" border="0" cellspacing="0" class="main1">
+                <tr>
+                    <td class="text"><input type="text/css" class="text1" id="ordername" placeholder="产品名"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table width="100%" border="0" cellspacing="0" class="main1">
+                <tr>
+                    <td class="text"><input type="text/css" class="text1" id="orderprice" placeholder="产品价格"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table width="100%" border="0" cellspacing="0" class="main1">
+                <tr>
+                    <td class="text"><input type="text/css" class="text1" id="orderstoke" placeholder="产品个数"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>           
+            <table width="100%" border="0" cellspacing="0" class="main1">
+                <tr>
+                    <td class="text"><input type="text/css" class="text1" id="ordermiaoshu" placeholder="产品描述"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <br><br><br><br>
+        </div>!-->
+		<div class="sc_h"></div>
+    <!--<div class="orderlb">
+        
+        卖家名 时间 地址 买家名 电话 商品名
+        <img src="img/spt.jpg" class="spt">
+        <div class="mid">
+            <p class="name">韩国正品：</p>
+            <p class="name">卖家名：</p>
+            <p class="name">买家地址：</p>
+            <p class="name">下单时间：</p>
+            <p class="name">卖家名：</p>
+            
+        </div>
+        <div class="jgq">
+            <div class="price"><p>￥<span class="pri">11.00</span></p></div>
+            
+    </div>
+    
+    </div>-->	
+	
+		<ul id="wodedingdan"></ul>
+		
+		
+<div class="juli">
+&nbsp
+<br>
+</div>
+<!--网页底部栏-->
+<div>
+    <table width="100%" border="0" cellspacing="0" class="nav">
+        <tr>
+            <td width="25" class="foot"><a href="index.html"><img src="img/function.png" width="20%" height="auto"/><p>分类</p></a></td>
+            <td width="25" class="foot"><a href="addgoods.html"><img src="img/addgoods.png" width="20%" height="auto"/><p>发布</p></a></td> 
+            <td width="25" class="foot"><a href="shopcard.html"><img src="img/shopcard.png" width="20%" height="auto"/><p>购物车</p></a></td>
+            <td width="25" class="foot"><a href="member.html"><img src="img/myself.png" width="20%" height="auto"/><p>我的</p></a></td>
+        </tr>
+    </table>
+</div>
+
+<!--
+<script src="js/jquery.min.js"></script>
+
+<script>
+    var fil;
+    $(document).ready(function () {
+    $("#inputs").change(function () {
+    fil = this.files;
+    reads(fil[0]);
+    });
+    });
+    function reads(fil){
+    var reader = new FileReader();
+    reader.readAsDataURL(fil);
+    reader.onload = function()
+    {
+    document.getElementById("dd").innerHTML += "<img src='"+reader.result+"'>";
+    };
+    }
+    var film=fil[0]
+    //上传
+    function testGetUser(){
+      $.ajax({
+            url: "/MyStore/AddProdServlet",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                name:$("#name").val,
+                price:$("#price").val,
+                imgurl:film,
+                stoke:$("#stoke").val,
+                typeid:$("#typeid").val,
+                description:$("#miaoshu").val
+            },
+            success: function(data,status,xhr) {
+              alert('success');
+              
+              
+            },
+            error: function(data) {
+                console.log(JSON.parse(data.responseText).Error);
+                alert(JSON.parse(data.responseText).Error)
+            }
+        });
+    }
+</script>
+-->
+</body>
+
+
+
+
+
+<script type="text/javascript">
+				var i=0;  
+                var str = "";
+	window.onload=function(){
+      	$.ajax({
+            url: "http://libkindle.com:8080/WebSell/CartServlet",
+            type: 'GET',
+            dataType: 'json',
+            data: {
+				action:"listOrder",
+				page:0
+            },
+            success: function(data,status,xhr) {
+			if(data.code==0){			
+					
+				console.log(data.data.length);	
+				
+                for(i=0;i<data.data.length;i++)
+                {
+				   console.log(data.data[i].data[0].price);
+                   str +="<div class='orderlb'><img src='"+data.data[i].data[0].icon+"' class='spt'><div class='mid'><p class='name'>"+data.data[i].data[0].prodname+"</p><p class='name'>卖家名："+data.data[i].sellernickname+"</p><p class='name'>买家地址："+data.data[i].address+"</p><p class='name'>下单时间："+data.data[i].time+"</p><p class='name'>买家名："+data.data[i].usernickname+"</p></div><div class='jgq'><div class='price'><p>￥<span class='pri'>"+data.data[i].data[0].price+"</span></p></div></div></div>";
+                }	
+					
+					$("#wodedingdan").append(str);
+					
+					
+           			//$("#nickname").append(data.nickname)
+					//$("#telephone").append(data.telephone)
+					//$(".slides").append("<li><img src='"+data.icon+"' width='50px' height='50px' /></li>")
+					//$("#nickname").html(data.nickname);
+					//$("#telephone").html(data.telephone);
+					console.log("获取信息成功");
+			}else
+			{	
+				alert("没有相关订单");
+				//location.href = "login.html";
+			}
+            },
+            error: function() {
+            	alert("获取信息失败");
+            	window.location.href = "#";
+            },
+        });
+    };
+	
+	
+	
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,280 @@
+<!--注意：本界面是搜索按钮按下后跳转的界面！-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>搜索结果</title>
+
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name = "format-detection" content = "telephone=no">
+    <link type="text/css" href="css/search-css.css" rel="stylesheet" >
+    <script type="text/javascript">  
+      //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com  
+//stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari  
+if(("standalone" in window.navigator) && window.navigator.standalone){  
+  var noddy, remotes = false;  
+  document.addEventListener('click', function(event) {  
+    noddy = event.target;
+    while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {  
+      noddy = noddy.parentNode;  
+    }  
+    if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))  
+    {  
+      event.preventDefault();  
+      document.location.href = noddy.href;  
+    }  
+  },false);  
+}  
+</script> 
+
+</head>
+<body>
+  <!--网页头部栏-->
+  <div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+      <tr>
+        <td class="nav_icon">
+          <a href="homepage.html"><img src="img/icon.png" width="75%" height="auto"/></a>
+        </td>
+        <td class="nav_left">
+          <select class="nav_op">
+            <option class="nav_tion">威海</option>
+            <option class="nav_tion">青岛</option>
+            <option class="nav_tion">北京</option>
+            <option class="nav_tion">上海</option>
+            <option class="nav_tion">广州</option>
+            <option class="nav_tion">天津</option>
+            <option class="nav_tion">沈阳</option>
+            <option class="nav_tion">大连</option>
+            <option class="nav_tion">重庆</option>
+            <option class="nav_tion">西安</option>
+            <option class="nav_tion">成都</option>
+            <option class="nav_tion">延边</option>
+            <option class="nav_tion">烟台</option>
+          </select>
+        </td>
+        <form action='javascript:void(0);'>
+          <td class="nav_right"><input type="text" id="search" placeholder="输入关键词搜索商品" autofocus x-webkit-speech class="searc"></input></td>
+          <input type="hidden" id="category" value="1"></input>
+          <td class="nav_ss"><input type="submit"  value="搜索" onclick="sousuo()" class="sss"></input></td>
+        </form>
+      </tr>
+    </table>
+  </div> 
+  <br> <br>
+
+  <!--排序 0上市时间 1月销量 2卖家等级 3价格顺序   onclick需要些函数展示-->
+  <div>
+    <button type="button" class="searchtext" onclick="sendValue(this)" value="1">月销量</button>
+    <button type="button" class="searchtext" onclick="sendValue(this)" value="2">卖家等级</button>
+    <button type="button" class="searchtext" onclick="sendValue(this)" value="3">价格</button>
+  </div>   
+  <!--正确的格式应该是这样的-->
+  <!--<div class="searchmain">
+    <a href="dianji.html">
+      <div>
+        <table width="100%" border="0" cellspacing="0" class="searchtable">
+          <tr>
+            <td width="35%" class="search_pic"><img src="img/diannao.jpg" width="100%" height="22%"/>
+            </td>
+            <td width="55%" class="search_text">
+              <div class="search_text_1">苹果手机</div>
+              <div class="searchprice"><br>￥:3999</div>
+              <div class="sj"><br>卖家:楚士真</div>
+            </td>
+
+          </tr>
+        </table>
+    </div></a>
+  </div>
+  <!--以上是一个正确格式例子-->
+
+  <!--改进版本（竖排展示）-->
+
+  <ul id="liebiao"></ul>	
+  <center><span style="color:#999"><div id="notice"></div></span></center>
+
+  <!--网页底部栏-->
+  <div>
+    <br><br><br><br>
+    <table width="100%" border="0" cellspacing="0" class="nav">
+      <tr>
+        <td width="25" class="foot"><a href="index.html"><img src="img/function.png" width="20%" height="auto"/><p>分类</p></a></td>
+        <td width="25" class="foot"><a href="addgoods.html"><img src="img/addgoods.png" width="20%" height="auto"/><p>发布</p></a></td> 
+        <td width="25" class="foot"><a href="shopcard.html"><img src="img/shopcard.png" width="20%" height="auto"/><p>购物车</p></a></td>
+        <td width="25" class="foot"><a href="member.html"><img src="img/myself.png" width="20%" height="auto"/><p>我的</p></a></td>
+      </tr>
+    </table>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+
+
+
+
+
+<script type="text/javascript">
+  function shuzi(){
+
+    return value;
+  }
+</script>
+
+<script type="text/javascript">
+var pager=0;
+var guanjianzi;
+var isbool=true;//触发开关，防止多次调用事件    
+
+//var chuxian= showval.split("=")[1];
+$(function(){
+  var thisURL = document.URL;  
+  var getval =thisURL.split('?')[1];  
+  var showval= getval.split("=")[1]; 
+  if(showval==1){
+    guanjianzi="手机";
+  }else if (showval==2){
+    guanjianzi="电脑";
+  }else if (showval==3){
+    guanjianzi="自行车";
+  }else if (showval==4){
+    guanjianzi="摩托车";
+  }else if (showval==5){
+    guanjianzi="书";
+  }else if (showval==6){
+    guanjianzi="卡";
+  }else if (showval==7){
+    guanjianzi="沙发";
+  }else if (showval==8){
+    guanjianzi="包";
+  }
+  $("#search").val(guanjianzi);
+  $.ajax({
+    url: "http://libkindle.com:8080/WebSell/SearchServlet",
+    type: 'GET',
+    dataType: 'json',
+    data: {
+      action:"product",
+      search:$("#search").val(),
+      page:0,
+      sortby:0
+    },
+    success: function(data,status,xhr) {
+      $("#search").html(guanjianzi);
+      if(data.code==0){
+        var i=0;  
+        var str = "";
+        for(i=0;i<data.count;i++)
+        {
+
+          str +="<div class='searchmain'><a href='dianji.html?prodid="+data.data[i].prodid+"'><div><table width='100%' border='0' cellspacing='0' class='searchtable'><tr><td width='35%' class='search_pic'><img src='"+data.data[i].icon+"' width='100%' height='80'/></td><td width='55%' class='search_text'><div class='search_text_1'>"+data.data[i].prodname+"</div><div class='searchprice'><br>"+'￥'+data.data[i].price+"</div><div class='sj'><br>卖家:"+data.data[i].nickname+"</div></td></tr></table></div></a></a></div>";
+        }	
+        $("#liebiao").append(str);
+        //$("#icon").append(data.data[0].icon);
+      }
+    },
+    error: function() {
+      alert("读取数据错误");
+      window.location.href = "#";
+    },
+  });
+});
+
+function sendValue(btu){
+  $("#category").val(btu.value);
+  sousuo();
+}
+
+function sousuo(){
+  window.pager=0;
+  console.log($("#search").val()+":"+$("#category").val()+":"+pager);
+  $("#liebiao").empty();
+  $.ajax({
+    url: "http://libkindle.com:8080/WebSell/SearchServlet",
+    type: 'GET',
+    dataType: 'json',
+    data: {
+      action:"product",
+      search:$("#search").val(),
+      page:pager,
+      sortby:$("#category").val()
+    },
+    success: function(data,status,xhr) {
+      $("#liebiao").html(" ");
+      $("#notice").html(data.msg);
+      if(data.code==0){
+
+        //alert(data.msg);
+        var i=0;  
+        var str = "";
+        for(i=0;i<data.count;i++)
+        {
+          str +="<div class='searchmain'><a href='dianji.html?prodid="+data.data[i].prodid+"'><div><table width='100%' border='0' cellspacing='0' class='searchtable'><tr><td width='35%' class='search_pic'><img src='"+data.data[i].icon+"' width='100%' height='80'/></td><td width='55%' class='search_text'><div class='search_text_1'>"+data.data[i].prodname+"</div><div class='searchprice'><br>"+'￥'+data.data[i].price+"</div><div class='sj'><br>卖家:"+data.data[i].nickname+"</div></td></tr></table></div></a></a></div>";
+        }	
+        $("#liebiao").append(str);
+        //$("#icon").append(data.data[0].icon);
+      }  		
+    },
+    error: function() {
+      alert("读取数据错误");
+      window.location.href = "#";
+    },
+  });
+};
+
+
+$(window).scroll(function() {
+  console.log("加载一次");
+  if (($(this).scrollTop() + $(window).height()) >= $(document).height() && isbool==true) {      
+    isbool=false;    
+    window.pager++;
+    sousuo1();
+    isbool=true;    
+
+  }      
+});
+
+function sousuo1(){
+  console.log($("#search").val()+":"+$("#category").val()+":"+pager);
+  $.ajax({
+    url: "http://libkindle.com:8080/WebSell/SearchServlet",
+    type: 'GET',
+    dataType: 'json',
+    data: {
+      action:"product",
+      search:$("#search").val(),
+      page:pager,
+      sortby:$("#category").val()
+    },
+    success: function(data,status,xhr) {
+      //$("#liebiao").html(" ");
+      $("#notice").html(data.msg);
+      if(data.code==0){
+        //alert(data.msg);
+        var i;
+        var str = "";
+        for(i=0;i<data.count;i++)
+        {
+          console.log(i);
+          str +="<div class='searchmain'><a href='dianji.html?prodid="+data.data[i].prodid+"'><div><table width='100%' border='0' cellspacing='0' class='searchtable'><tr><td width='35%' class='search_pic'><img src='"+data.data[i].icon+"' width='100%' height='80'/></td><td width='55%' class='search_text'><div class='search_text_1'>"+data.data[i].prodname+"</div><div class='searchprice'><br>"+'￥'+data.data[i].price+"</div><div class='sj'><br>卖家:"+data.data[i].nickname+"</div></td></tr></table></div></a></a></div>"
+        }	
+        $("#liebiao").append(str);
+
+        //$("#icon").append(data.data[0].icon);
+      }          		
+    },
+    error: function() {
+      alert("读取数据错误");
+      window.location.href = "#";
+    },
+  });
+};
+
+</script>
+
+</html>

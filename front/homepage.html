@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>欢迎来到二手交易商城</title>
+
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name = "format-detection" content = "telephone=no">
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/material-cards.css">
+
+	<link type="text/css" href="css/style.css" rel="stylesheet" />
+	<link type="text/css" href="css/css.css" rel="stylesheet" />
+
+ <script type="text/javascript">  
+    //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com  
+    //stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari  
+    if(("standalone" in window.navigator) && window.navigator.standalone){  
+        var noddy, remotes = false;  
+        document.addEventListener('click', function(event) {  
+            noddy = event.target;
+            while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {  
+                noddy = noddy.parentNode;  
+            }  
+            if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))  
+            {  
+                event.preventDefault();  
+                document.location.href = noddy.href;  
+            }  
+        },false);  
+    }  
+  </script> 
+    
+    <style type="text/css">
+
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        background-color: #ECEFF1;
+        color: #37474F;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    h1, h2, h3 {
+        font-weight: 200;
+    }
+
+</style>
+ 
+</head>
+<body>
+<!--网页头部栏-->
+	<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+    	<tr>
+    		<td class="nav_icon">
+    		<a href="homepage.html"><img src="img/icon.png" width="75%" height="auto"/></a>
+    		</td>
+        	<td class="nav_left">
+            <select class="nav_op">
+            	<option class="nav_tion">威海</option>
+            	<option class="nav_tion">青岛</option>
+                <option class="nav_tion">北京</option>
+                <option class="nav_tion">上海</option>
+                <option class="nav_tion">广州</option>
+                <option class="nav_tion">天津</option>
+                <option class="nav_tion">沈阳</option>
+                <option class="nav_tion">大连</option>
+                <option class="nav_tion">重庆</option>
+                <option class="nav_tion">西安</option>
+                <option class="nav_tion">成都</option>
+                <option class="nav_tion">延边</option>
+                <option class="nav_tion">烟台</option>
+            </select>
+            </td>
+            <td ></td>
+            <td class="nav_right"><input type="text" placeholder="输入关键词搜索商品" autofocus x-webkit-speech class="searc">
+            </td>
+            <td class="nav_ss"><a href="search.html"><input type="submit"  value="搜索" class="sss"></a></td>
+
+        </tr>
+    </table>
+    </div>
+<!--网站中间-->
+    <div>
+    <br>
+        <table width="100%" border="0" >
+        <tr>
+            <td width="100%"  ><img class="aboutus" src="img/aboutus.jpg"></a></td>
+    </table>
+    </div>
+
+
+<!--人物介绍-->
+<div class="tuijianshangpin">
+    <p>一 团队介绍 一</p>
+</div>
+
+<div class="homepagefoot">
+<br>
+    <section class="container">
+
+        <div class="row active-with-click">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Cyan">
+                    <h2>
+                        <span>Yue Yin</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            后端工程师
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-responsive" src="img/yinyue.jpg">
+                        </div>
+                        <div class="mc-description">
+                            恋爱狗<br>
+                            编写数据库<br>
+                            处理所有后台数据<br>
+                            熟练使用java<br>
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+
+                </article>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Brown">
+                    <h2>
+                        <span>Bohan Zhang</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            前端工程师
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-responsive" src="img/zhangbohan.jpg">
+                        </div>
+                        <div class="mc-description">
+                            恋爱狗<br>
+                            编写HTML5+CSS<br>
+                            熟练使用bootstrap<br>jquery
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+
+                </article>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Blue-Grey">
+                    <h2>
+                        <span>Shizhen Chu</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            前端工程师
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-responsive" src="img/chushizhen.jpg">
+                        </div>
+                        <div class="mc-description">
+                            单身狗<br>
+                            熟练掌握js<br>
+                            使用ajax完成前后端交互<br>
+
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+
+                </article>
+            </div>
+    </section>
+</div>
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.material-cards.min.js"></script>
+<script>
+    $(function() {
+        $('.material-card').materialCard({
+            icon_close: 'fa-chevron-left',
+            icon_open: 'fa-thumbs-o-up',
+            icon_spin: 'fa-spin-fast',
+            card_activator: 'click'
+        });
+
+//        $('.active-with-click .material-card').materialCard();
+
+        window.setTimeout(function() {
+            $('.material-card:eq(1)').materialCard('open');
+        }, 2000);
+
+        $('.material-card').on('shown.material-card show.material-card hide.material-card hidden.material-card', function (event) {
+            console.log(event.type, event.namespace, $(this));
+        });
+
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--网站解释-->
+    <center>
+        <p>哈尔滨工业大学（威海）计算机学院1504201</p>
+        <p>殷悦，张博涵，楚士真合作开发</p>
+        <p>感谢老师和同学的大力支持和帮助</p>
+        <p>最终解释权归开发者所有</p>
+    </center>
+
+
+<div class="juli">
+    &nbsp
+    <br>
+    &nbsp
+	<br>
+	&nbsp
+</div>
+
+
+    
+<!--网页底部栏-->
+<div class="homepagefoot">
+    <table width="100%" border="0" cellspacing="0" class="nav">
+        <tr>
+            <td width="25" class="foot"><a href="index.html"><img src="img/function.png" width="20%" height="auto"/><p>分类</p></a></td>
+            <td width="25" class="foot"><a href="addgoods.html"><img src="img/addgoods.png" width="20%" height="auto"/><p>发布</p></a></td> 
+            <td width="25" class="foot"><a href="shopcard.html"><img src="img/shopcard.png" width="20%" height="auto"/><p>购物车</p></a></td>
+            <td width="25" class="foot"><a href="member.html"><img src="img/myself.png" width="20%" height="auto"/><p>我的</p></a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

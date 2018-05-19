@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>同城二手购物商城</title>
+	<meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name = "format-detection" content = "telephone=no">
+    <link type="text/css" href="css/css.css" rel="stylesheet" >
+    <link rel="stylesheet" type="text/css" href="css/gundong.css">
+  <link rel="apple-touch-icon" href="http://libkindle-1251622063.cossh.myqcloud.com/img/ico.png" />
+  <link rel="shortcut icon" href="http://libkindle-1251622063.cossh.myqcloud.com/img/ico.ico">
+  <link rel="bookmark" href="http://libkindle-1251622063.cossh.myqcloud.com/img/ico.ico">
+ <script type="text/javascript">  
+    //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com  
+    //stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari  
+    if(("standalone" in window.navigator) && window.navigator.standalone){  
+        var noddy, remotes = false;  
+        document.addEventListener('click', function(event) {  
+            noddy = event.target;
+            while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {  
+                noddy = noddy.parentNode;  
+            }  
+            if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))  
+            {  
+                event.preventDefault();  
+                document.location.href = noddy.href;  
+            }  
+        },false);  
+    }  
+  </script> 
+    
+</head>
+<body>
+<!--网页头部栏-->
+    <div class="indexheader">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td class="nav_icon">
+            <a href="homepage.html"><img src="img/icon.png" width="75%" height="auto"/></a>
+            </td>
+            <td class="nav_left">
+            <select class="nav_op">
+                <option class="nav_tion">威海</option>
+                <option class="nav_tion">青岛</option>
+                <option class="nav_tion">北京</option>
+                <option class="nav_tion">上海</option>
+                <option class="nav_tion">广州</option>
+                <option class="nav_tion">天津</option>
+                <option class="nav_tion">沈阳</option>
+                <option class="nav_tion">大连</option>
+                <option class="nav_tion">重庆</option>
+                <option class="nav_tion">西安</option>
+                <option class="nav_tion">成都</option>
+                <option class="nav_tion">延边</option>
+                <option class="nav_tion">烟台</option>
+            </select>
+            </td>
+            <td ></td>
+            <td class="nav_right"><a href="search.html"><input type="text" placeholder="输入关键词搜索商品" autofocus x-webkit-speech class="searc">
+            </td>
+            <td class="nav_ss"><input type="submit" onclick="javascript:sousuo()" value="搜索" class="sss"></a></td>
+
+        </tr>
+    </table>
+
+    </div> 
+<br><br>
+
+
+<!--滚动图片 需要修改地址即可-->
+    <div class="box">
+        <ul class="list">
+            <li><img class="slide" src="img/gundong1.jpg" height="150px" /></li>
+            <li><img class="slide" src="img/gundong2.jpg" height="150px" /></li>
+            <li><img class="slide" src="img/gundong3.jpg" height="150px" /></li>
+            <li><img class="slide" src="img/gundong4.jpg" height="150px" /></li> 
+            <!--图片大小最好使用320*150 自己定义-->
+            </ul>
+        <div class="index">
+            <a href="javascript:" class="index_1">1</a>
+            <a href="javascript:" class="index_2">2</a>
+            <a href="javascript:" class="index_3">3</a>
+            <a href="javascript:" class="index_4">4</a>
+        </div>
+    </div>
+
+<!--滚动图片下面的功能栏-->  
+<div class="gongneng" >
+            <ul class="gongneng-list">
+                <li class="item"><a href="search.html?search=1"><div class="img shouji"></div><p>手机</p></a></li>
+                <li class="item"><a href="search.html?search=2"><div class="img diannao"></div><p>电脑</p></a></li>
+                <li class="item"><a href="search.html?search=3"><div class="img zixingche"></div><p>自行车</p></a></li>
+                <li class="item"><a href="search.html?search=4"><div class="img motuoche"></div><p>摩托车</p></a></li>
+            </ul>
+            <ul class="gongneng-list">
+                <li class="item"><a href="search.html?search=5"><div class="img tushu"></div><p>书籍</p></a></li>
+                <li class="item"><a href="search.html?search=6"><div class="img kaquan"></div><p>卡券</p></a></li>
+                <li class="item"><a href="search.html?search=7"><div class="img jiaju"></div><p>家居</p></a></li>
+                <li class="item"><a href="search.html?search=8"><div class="img xiangbao"></div><p>箱包</p></a></li>
+            </ul>
+        </div>  
+
+<!--推荐商品-->
+<div class="tuijianshangpin">
+    <p>一 推荐商品 一</p>
+</div>
+
+<!--商品展示 类似手机淘宝-->
+
+<div>
+    <a href="dianji.html?prodid=bb011e076e944d8fbcf33c994cf7d4b5" class="goodsshow fl">
+        <img src="img/testpic.jpg" width="99%" height="160px">
+        <span >IPhone6 plus</span>
+        <br>
+        <span class="price" >￥3999</span>
+        <span class="msg">楚士真</span>
+    </a>
+    <a href="dianji.html?prodid=ececbfcf05104f2c8601a2f0d2bc8a37" class="goodsshow fr">
+        <img src="img/diannao.jpg" width="99%" height="160px">
+        <span>笔记本电脑</span>
+        <br>
+        <span class="price">￥8888</span>
+	<span class="msg">张博涵</span
+    </a>
+    <a href="dianji.html?prodid=4ca56ae224094b29ab89503da0312c3f" class="goodsshow fl">
+        <img src="img/zixingche.jpg" width="99%" height="160px">
+        <span >永久自行车</span>
+        <br>
+        <span class="price">￥200</span>
+        <span class="msg">0000</span>
+    </a>
+    <a href="dianji.html?prodid=837b7298b5864d08ab89665a1b732404" class="goodsshow fr">
+        <img src="img/shuji.jpg" width="99%" height="160px">
+        <span>密码学原版教材</span>
+        <br>
+        <span class="price">￥20</span>
+        <span class="msg">张博涵</span>
+    </a>
+    
+
+ </div>
+
+<div class="juli">
+ &nbsp
+</div> 
+
+<!--网页底部栏-->
+<div>
+    <table width="100%" border="0" cellspacing="0" class="nav">
+        <tr>
+            <td width="25" class="foot"><a href="index.html"><img src="img/function.png" width="20%" height="auto"/><p>分类</p></a></td>
+            <td width="25" class="foot"><a href="addgoods.html"><img src="img/addgoods.png" width="20%" height="auto"/><p>发布</p></a></td> 
+            <td width="25" class="foot"><a href="shopcard.html"><img src="img/shopcard.png" width="20%" height="auto"/><p>购物车</p></a></td>
+            <td width="25" class="foot"><a href="member.html"><img src="img/myself.png" width="20%" height="auto"/><p>我的</p></a></td>
+        </tr>
+    </table>
+</div>
+    <div class="kb"></div> 
+		<script src="js/jquery.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+<script type="text/javascript">
+	var pager=0;
+	function sousuo(){
+      	$.ajax({
+            url: "http://libkindle.com:8080/WebSell/SearchServlet?sortby=1",
+            type: 'GET',
+            dataType: 'json',
+            data: {
+				action:"product",
+            	search:$("#search").val(),
+				page:pager
+            },
+            success: function(data,status,xhr) { 
+				if(data.code==0){
+				//alert(data.msg);
+				var i=0;  
+				con = "";
+				for(i=0;i<data.count;i++)
+				{
+					con += "<li>姓名："+data.prodid+"</li>";
+				}
+				$("#panduan").append("<a href='search.html'   >"+con);
+				pager++;
+				location.href = "search.html";
+				}
+ 				else{
+           			alert("登陆失败");
+           			}           		
+            },
+            error: function() {
+            	alert("密码错误");
+            	window.location.href = "#";
+            },
+        });
+    };
+</script>
+
+</html>

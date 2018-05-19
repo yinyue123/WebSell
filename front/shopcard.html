@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>购物车</title>
+    <link rel="stylesheet" type="text/css" href="css/shopcar.css">
+    <script type="text/javascript" src="js/auto-size.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+
+    <link type="text/css" href="css/css.css" rel="stylesheet" />
+
+ <script type="text/javascript">  
+    //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com  
+    //stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari  
+    if(("standalone" in window.navigator) && window.navigator.standalone){  
+        var noddy, remotes = false;  
+        document.addEventListener('click', function(event) {  
+            noddy = event.target;
+            while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {  
+                noddy = noddy.parentNode;  
+            }  
+            if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))  
+            {  
+                event.preventDefault();  
+                document.location.href = noddy.href;  
+            }  
+        },false);  
+    }  
+  </script> 
+    
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--下单界面！！！-->
+<div id="quxiadan" style="display:none">
+<!--网页头部栏-->
+    <div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1"><a  href='javascript:window.history.go(-1)'><</a></td>
+            <td width="80%" class="nav_title">确认订单</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+    </div>
+<!--填写地址-->
+
+<div class="xiadan">
+    
+        <div class="xiadanmain">
+            <p style='font-size:16px ' >请填写收货人信息：</p>
+            <table >
+                
+                <tr>
+                    <td class="xiadantext"><input type="text/css" class="xiadantext1" id="maijiausername" placeholder="收货人姓名"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table >
+                <tr>
+                    <td class="xiadantext"><input type="text/css" class="xiadantext1" id="maijiaphone" placeholder="收货人电话"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table >
+                <tr>
+                    <td class="xiadantext"><input type="text/css" class="xiadantext1" id="maijialocation" placeholder="收货地址"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+
+        </div>
+
+<div class="xiadanjiange">
+    &nbsp
+</div>
+<ul id="zhanshi"></ul>
+<!--购物车-->        
+<!--<div class="maijialan">
+    <div class="display">
+    卖家：  张博涵    >
+    </div>
+</div>
+<div class="lb">
+        <img style="margin-left: 25px" src="img/spt.jpg" class="spt">
+        <div class="mid">
+            <p class="name" style="text-align: center">韩国正品自然乐园芦荟补水保湿洗面奶男士女控油</p>
+            <p class="color">颜色:白色</p>
+
+        </div>
+        <div class="jgq">
+            <div class="price"><p>￥<span class="pri">11.00</span></p></div>
+        </div>
+</div>!-->
+    
+    </div>
+        <div class="button"><input type="submit" onclick="javascript:querendingdan()" value="确认下单" class="text2" /></div>
+
+<div class="juli">
+    &nbsp
+    <br>
+    &nbsp
+</div>
+<!--网页底部栏-->
+<div>
+    <table width="100%" border="0" cellspacing="0" class="nav">
+        <tr>
+            <td width="25" class="foot"><a href="index.html"><img src="img/function.png" width="30%" height="auto"/><p>分类</p></a></td>
+            <td width="25" class="foot"><a href="addgoods.html"><img src="img/addgoods.png" width="30%" height="auto"/><p>发布</p></a></td> 
+            <td width="25" class="foot"><a href="shopcard.html"><img src="img/shopcard.png" width="30%" height="auto"/><p>购物车</p></a></td>
+            <td width="25" class="foot"><a href="member.html"><img src="img/myself.png" width="30%" height="auto"/><p>我的</p></a></td>
+        </tr>
+    </table>
+</div>
+
+<!--<script type="text/javascript" src="js/scripts.js"></script>!-->
+</div>
+<!--下单界面结束-->
+
+
+
+
+
+
+
+<!--购物车界面-->
+
+<div id="gouwuche" >
+<!--网页头部栏-->
+    <div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1"><a  href='javascript:window.history.go(-1)'><</a></td>
+            <td width="80%" class="nav_title">购物车</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+    </div>
+
+<!--购物车-->
+<div class="sc_h"></div>
+  <!--  
+<div class="maijialan">
+    <div class="display">
+    卖家：  张博涵    >
+    </div>
+	<div class="lb">
+        <div class="check">
+            <div class="xz" data="0">
+                
+            </div>
+        </div>
+        <img src="img/spt.jpg" class="spt">
+        <div class="mid">
+            <p class="name">韩国正品自然乐园芦荟补水保湿洗面奶男士女控油</p>
+            <p class="color">颜色:白色</p>
+            <div class="jj">
+                <span class="jia">-</span>
+                <input class="num" value="1">
+                <span class="jian">+</span>
+            </div>
+        </div>
+        <div class="jgq">
+            <div class="price"><p>￥<span class="pri">11.00</span></p></div>
+            <img src="img/del.jpg" class="del">
+        </div>
+    </div>!-->   
+	<ul id="xinjia"></ul>
+	
+	<div class="juli">
+    &nbsp
+    <br>
+</div>
+	
+	
+    <div class="fix_bottom">
+        <div id="qx" data="0"></div><span style="float:left;line-height:0.8rem;">全选</span>
+        <div class="zjq">
+        <p class="p1">合计:￥
+        <span id="zj">0</span>
+        </p>
+        <p>含运费</p>
+        </div>
+        <a id="js"><input type="submit" class="xiadanbutton" onclick="javascript:quxiadan()" value="下单"  /></a>
+    </div>
+    <script type="text/javascript">
+ 
+    </script>
+
+<!--网页底部栏-->
+<div>
+    <table width="100%" border="0" cellspacing="0" class="nav">
+        <tr>
+            <td width="25" class="foot"><a href="index.html"><img src="img/function.png" width="20%" height="auto"/><p>分类</p></a></td>
+            <td width="25" class="foot"><a href="addgoods.html"><img src="img/addgoods.png" width="20%" height="auto"/><p>发布</p></a></td> 
+            <td width="25" class="foot"><a href="shopcard.html"><img src="img/shopcard.png" width="20%" height="auto"/><p>购物车</p></a></td>
+            <td width="25" class="foot"><a href="member.html"><img src="img/myself.png" width="20%" height="auto"/><p>我的</p></a></td>
+        </tr>
+    </table>
+</div>
+</div>
+<!--购物车界面结束-->
+
+
+
+
+
+
+<script src="js/jquery.min.js"></script>
+	<script src="js/app.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script type="text/javascript">
+	var shuzu=new Array();
+	var pager=0;
+	
+	
+	window.onload=function()
+	{
+	          $("#gouwuche").show();
+			  $("#quxiadan").hide();
+
+	}
+			var e;
+			rng="?";
+			ijk=0;
+	function quxiadan(){
+				
+				
+				
+				
+				
+				
+				var maijiaid;
+                $(".xz").each(function(){
+                    if ($(this).attr("data")==1) {
+						
+                        
+						e = $(this).parent().next().next().find(".name").val();
+						console.log(e);
+						window.shuzu[ijk]=e;
+						console.log(shuzu[ijk]);
+						if(ijk==0)
+						{
+						rng+="prodid"+ijk+"="+e;
+						}
+						else
+						{rng+="&prodid"+ijk+"="+e;}
+						ijk++;
+						console.log(rng);
+                       
+                    }
+					
+                })
+						
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				$("#quxiadan").css("display","block");
+				$("#gouwuche").hide(); 
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				var z;
+				var zssp="";
+
+			for(z=0;z<window.ijk;z++)
+			{
+			$.ajax({
+            url: "http://libkindle.com:8080/WebSell/ProductServlet",
+            type: 'GET',
+            dataType: 'json',
+			async:false,
+            data: {
+				prodid:shuzu[z]
+            },
+            success: function(data,status,xhr) { 
+				if(data.code==0){
+				alert(data.msg);
+				zssp+="<div class='maijialan'><div class='display'>"+data.name+"</div></div><div class='lb'><img style='margin-left: 25px' src="+data.imgurl+" class='spt'><div class='mid'><p class='name' style='text-align: center'>"+data.stoke+"</p><p class='color'>颜色:白色</p></div><div class='jgq'><div class='price'><p>￥<span class='pri'>"+data.price+"</span></p></div></div></div>"
+				}
+ 				else{
+           			console.log("shibai");
+           			}           		
+            },
+            error: function() {
+            	alert("密码错误");
+            	window.location.href = "#";
+            },
+        });}$("#zhanshi").append(zssp);
+	
+	}
+	
+	
+	
+
+	function querendingdan(){
+      	$.ajax({
+            url: "http://libkindle.com:8080/WebSell/CartServlet"+window.rng,
+            type: 'GET',
+            dataType: 'json',
+            data: {
+				action:"pay",
+            	address:$("#maijialocation").val(),
+				telephone:$("#maijiaphone").val(),
+				message:$("#maijiausername").val(),
+				sellerid:window.d,
+				number:ijk
+            },
+            success: function(data,status,xhr) { 
+				if(data.code==0){
+				alert(data.msg);
+				location.href = "index.html";
+				}
+ 				else{
+           			alert(data.msg);
+           			}           		
+            },
+            error: function() {
+            	alert("密码错误");
+            	window.location.href = "#";
+            },
+        });
+    };
+
+	
+	
+	
+	
+	
+	
+	
+	
+	window.onload=function(){
+      	$.ajax({
+            url: "http://libkindle.com:8080/WebSell/CartServlet",
+            type: 'GET',
+            dataType: 'json',
+            data: {
+				action:"listCart",
+				page:pager
+            },
+            success: function(data,status,xhr) {
+			if(data.code==0){								
+				<!--	$("#prodId").append(data.data[0].prodId);					
+           		<!--	$("#prodName").append(data.data[0].prodName);
+				<!--	$("#price").append(data.data[0].price);
+				var i=0;  
+				var str = "";
+				var j=0;
+				for(i=0;i<data.count;)
+				{str+="<div class='maijialan'><div class='display'>"+data.data[i].sellerId+"</div></div>";
+				console.log(data.data[i].sellerId);
+					for(j=i;j<data.count;j++)
+					{
+						
+						if(data.data[i].sellerId==data.data[j].sellerId)
+						{
+				<!--con +="<div class='lb'><div class='check'><div class='xz' data='0' 'display':'block'></div></div><img src='"+data.data[i].icon+"' class='spt'><div class='mid'><p class='name'>"+data.data[i].prodName+"</p><p class='color'>颜色:白色</p><div class='jj'><span class='jia'>-</span><input class='num' value='1'><span class='jian'>+</span></div></div><div class='jgq'><div class='price'><p><span class='pri'>"+data.data[i].price+"</span></p></div><img src='img/del.jpg' class='del'></div></div>";
+				<!--	$("#xinjia").append("<div class='lb'><div class='check'><div class='xz' data='0' 'display':'block'></div></div><img src='"+data.data[0].icon+"' class='spt'><div class='mid'><p class='name'>"+data.data[1].prodName+"</p><p class='color'>颜色:白色</p><div class='jj'><span class='jia'>-</span><input class='num' value='1'><span class='jian'>+</span></div></div><div class='jgq'><div class='price'><p><span class='pri'>"+data.data[1].price+"</span></p></div><img src='img/del.jpg' class='del'></div></div>");
+				<!--        			$("#xinjia").append("<tr><td data-title='Product #'>"+data.data[i].prodId+"</td><td data-title='Product Name'>"+data.data[i].prodName+"</td><td data-title='Qty' class='qty-table'>	<div class='qty-fields'><input class='qty-text' type='text' maxlength='12' size='4' id='shuliang"+data.data[i].prodId+"' value='"+data.data[i].price+"' /></div></td><td data-title='Totals'>￥"+data.data[i].price+"</td><td><button onclick='deletecart("+data.data[i].prodId+")' >删除</button></td></tr>") 	
+					str +="<div class='lb'><div class='check'><div class='xz' data='0'></div></div><img src='"+data.data[j].icon+"' class='spt'><div class='mid'><input type='hidden' class='name' value='"+data.data[j].prodId+"'></input><input type='hidden' class='seller' value='"+data.data[j].sellerId+"'></input><p class='color'>"+data.data[j].prodName+"</p><div class='jj'><span class='jia'>-</span><input class='num' value='1'><span class='jian'>+</span></div></div><div class='jgq'><div class='price' value='￥'><p>￥<span class='pri'>"+data.data[j].price+"</span></p></div><img src='img/del.jpg' class='del'></div></div>";
+						var v=j+1;
+						}
+	
+					}
+					i=v;
+					console.log(i);
+					
+				}	
+
+				quzhanshi:$("#xinjia").append(str);
+			$(function(){
+            //js();
+            $(".xz").click(function(){
+                var a = $(this).attr("data");
+                if (a==0) {
+                    $(this).css("background-image","url(img/check_on.jpg)");
+                    $(this).attr("data",1)
+                }else{
+                    $(this).css("background-image","url(img/check.jpg)");
+                    $(this).attr("data",0)
+                    $("#qx").attr("data",0);
+                    $("#qx").css("background-image","url(img/check.jpg)");
+                }
+                js();               
+                
+            })
+            $("#qx").click(function(){
+                var a = $(this).attr("data");
+                if (a==0) {
+                    $(".xz").attr("data",1);
+                $(this).css("background-image","url(img/check_on.jpg)");
+                $(".xz").css("background-image","url(img/check_on.jpg)");
+                $(this).attr("data",1);
+                }else{
+                    $(".xz").attr("data",0);
+                $(this).css("background-image","url(img/check.jpg)");
+                $(".xz").css("background-image","url(img/check.jpg)");
+                    $(this).attr("data",0);
+                }
+                js();
+            })
+            $(".jian").click(function(){
+                var a = $(this).prev().val();
+                a++;
+                $(this).prev().val(a);
+                js();
+
+            })
+            $(".jia").click(function(){
+                var a = $(this).next().val();
+                a--;
+                $(this).next().val(a);
+                var a = $(".xz").attr("data");
+                if(a==1){
+                    js();
+                }
+            })
+            $(".del").click(function(){
+                $(this).parent().parent().remove();
+				
+                js(); 
+            })
+			$(".zsl").click(function(){
+				alert("nihao");
+				$("#quxiadan").css("display","block");
+				$("#gouwuche").hide(); 
+				js();
+            })
+            /*function js(){
+
+                var num=0;
+                var conut=0;
+
+                $(".num").each(function(){
+
+                        var b=$(this).val()
+                    var jg=$(this).parent().parent().next().find(".pri").text();
+
+                    conut+=parseInt(b);
+                    num+=b*jg;
+                
+                });
+                $('#zj').html(num)
+            }*/
+			//var c;
+			//rng="?";
+			//ijk=0;
+             function js(){
+
+                var num=0;
+                var conut=0;
+
+                $(".xz").each(function(){
+                    if ($(this).attr("data")==1) {
+						
+                        var b = $(this).parent().next().next().find(".num").val();
+						console.log(b);
+						window.d = $(this).parent().next().next().find(".seller").val();
+						console.log(d);
+
+                        var jg = $(this).parent().next().next().next().find(".pri").text();
+						//console.log(jg);
+                        conut+=parseInt(b);
+						//console.log(window.count);
+                        num+=b*jg;
+						//console.log(window.count);
+						//console.log(window.num);
+                    }
+                })
+						//console.log(c);
+						//window.shuzu[ijk]=c;
+						//console.log(shuzu[ijk]);
+						//if(ijk==0)
+						//{
+						//rng+="prodid"+ijk+"="+c;
+						//}
+						//else
+						//{rng+="&prodid"+ijk+"="+c;}
+						//ijk++;
+						//console.log(rng);
+                
+                $('#zj').html(num);
+                $('#zsl').html(conut);
+            }
+        })
+           
+					//alert("获取信息成功");
+					pager++;
+			}else
+			{		
+				alert(data.msg);
+				if(data.code==2)
+					location.href = "login.html";
+			}
+            },
+            error: function() {
+            	alert("获取信息失败");
+            	window.location.href = "#";
+            },
+        });
+    };
+</script>
+
+</html>

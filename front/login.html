@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name = "format-detection" content = "telephone=no">
+
+    <link type="text/css" href="css/css.css" rel="stylesheet" />
+    <title>登录</title>
+
+ <script type="text/javascript">  
+    //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com  
+    //stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari  
+    if(("standalone" in window.navigator) && window.navigator.standalone){  
+        var noddy, remotes = false;  
+        document.addEventListener('click', function(event) {  
+            noddy = event.target;
+            while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {  
+                noddy = noddy.parentNode;  
+            }  
+            if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))  
+            {  
+                event.preventDefault();  
+                document.location.href = noddy.href;  
+            }  
+        },false);  
+    }  
+  </script> 
+
+    
+</head>
+<body>
+    <div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <!--td width="10%" class="nav_left1"><a  href='javascript:window.history.go(-1)'><</a></td-->
+            <td width="10%" class="nav_left1"><a  href='index.html'><</a></td>
+            <td width="70%" class="nav_title">我的信息</td>
+            <td width="20%" class="nav_r"></td>
+        </tr>
+    </table>
+    </div>
+
+	<div class="login">
+    	<div class="logo"></div>
+        <div class="main">
+        	<table width="100%" border="0" cellspacing="0" class="mainl">
+            	<tr>
+                	<td class="text"><input type="text/css" id="username" class="text1" placeholder="输入用户名"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+			<table width="100%" border="0" cellspacing="0" class="mainl">
+                <tr>
+                    <td class="text"><input type="password" id="password" class="text1" placeholder="输入密码"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+        </div>
+        <div class="button"><input type="submit" onclick="javascript:denglu()" value="登 录" class="text2" /></a></div>
+    </div>
+    <div class="footrt">
+    	<div class="footrt_left"><a href="register.html">注册新用户</a></div>
+        <div class="footrt_right"><a href="password.html">忘记密码？</a></div>
+    </div>
+	
+		<script src="js/jquery.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+<script type="text/javascript">
+	function denglu(){
+      	$.ajax({
+            url: "http://libkindle.com:8080/WebSell/LoginServlet",
+            type: 'GET',
+            dataType: 'json',
+            data: {
+				action:"login",
+            	username:$("#username").val(),
+				password:$("#password").val()
+            },
+            success: function(data,status,xhr) { 
+				if(data.code==0){
+				alert(data.msg);
+				location.href = "member.html";
+				}
+ 				else{
+           			alert(data.msg);
+           			}           		
+            },
+            error: function() {
+            	alert(data.msg);
+            	window.location.href = "#";
+            },
+        });
+    };
+</script>
+
+
+</html>

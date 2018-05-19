@@ -1,0 +1,55 @@
+@charset "utf-8";
+*{ margin:0; padding:0; list-style:none;}
+	input[type="button"], 
+	input[type="submit"], 
+	input[type="reset"] 
+	{
+	-webkit-appearance: none;}
+a{ text-decoration:none; color:#333;} 	
+.body,html{ height:100%; background:#f0f0f0;}
+
+/*底部菜单*/
+.foot{ text-align:center; font-size:12px; color:#666; padding-bottom:1px; }
+.nav{padding-top:5px; bottom:0px; left:0px; right:0px; position:fixed; overflow:hidden; width:100%; height:40px; background:#f7f7f7; border-top:#CCC 1px solid;}
+.foot span{color:#ff6633;}
+.nav a{ text-decoration:none; color:#666;}
+.navfabu{padding-top:5px; bottom:0px; left:0px; right:0px; position:fixed; overflow:hidden; width:100%; height:20px; background:#f7f7f7; border-top:#CCC 1px solid;}
+
+
+/*顶部菜单*/
+.header{ width:100%; height:44px; background:#DCDCDC; top:0px; left:0px; right:0px; position:fixed; overflow:hidden;}
+.header_nav{ width:100%; margin:0px auto; padding-top:7px;}
+.nav_left{ width:5%; font-size:15px; color:#FFF; font-family: "微软雅黑"; text-align:center; padding-left:20px;}
+.nav_right{ width:65%; height:20px; text-align:center;}
+.nav_icon{width:20%; color: #fff;text-align:center;}
+.nav_r{ width:20%; height:20px; text-align:center;}
+.nav_ss{ width:10%; font-size:16px; color:#FFF; font-family:"微软雅黑"; text-align:left; padding-top:2px; padding-right:10px;}
+.sss{ border:0px; background:#666; border-radius:15px; height:25px; width:50px; color:#FFF;}
+.nav_op{ border:0px; color:#fff; height:25px; line-height:30px; border-radius:10px; width:55px; background:#666;}
+.nav_tion{ background:#FFF; color:#666;}
+.nav_title{text-align:center; font-size:16px; color:#FFF; font-family: "微软雅黑"; width:50%;}
+.nav_left1 a{ color:#FFF;}
+.nav_left1{ width:25%; font-size:16px; color:#FFF; text-align:left; padding-left:20px;}
+
+/*搜索框*/
+.searc{background:#fff; border:0px; font-size:12px; color:#666; text-align:left; height:25px; width:80%; border-radius:15px; padding-left:10px; }
+
+/*搜索商品展示 */
+.searchclassmain{left: 5%; margin-right:5%; width:90%; margin:0px auto; text-align:center; padding-top:5px; padding-bottom:15px; margin-top:25px;}
+.searchclass_main{ float:left; margin:10px auto; text-align:center; widows:100%; }
+.searchclass_main_1{ width:80%; background:#FFF; border:#CCC 1px solid; height:50px; }
+.searchclass_pic{ width:50%; height:auto; float:left; margin:5px auto; padding-left:5px;}
+.searchclass_text{ width:20%; font-family:"微软雅黑"; font-size:12px; color:#666; float:left; text-align:center; height:70px; line-height:20px; padding-top:10px;}
+.searchtext{ margin-top: 10px; height:25px; width:32%; border:none; color:#FFF; font-size:17px; font-family:"微软雅黑"; background:#bdbdbd; border-radius:30px; font-weight:bold;}
+
+/*外卖列表*/
+.searchmain{ width:100%; background:#FFF; padding-bottom:15px;  margin-top:5px;}
+.search_pic{ width:45%; padding-left:15px;}
+.search_text{ width:50%; font-family:"微软雅黑";font-size: 16px; padding-left:10px; line-height:20px;}
+.search_phone{ width:25%; height:70px;}
+.search_text_1{ font-family:"微软雅黑"; font-size:20px; color:#666; text-align:left; width:100%;}
+.searchprice{ color:#F00;}
+.sj{ color:#999; font-size:14px; font-family:"微软雅黑";}
+.dh{ width:60%; height:40px;}
+.jl{ color:#999; font-size:14px; font-family:"微软雅黑"; margin-top:20px;}
+.searchtable{background:#FAFAFA;border: 1px solid #F2F2F2}

@@ -1,0 +1,24 @@
+.leftfunc{
+position: fixed;
+left: 0;
+top: 400px;
+width: 15%;
+}
+.rightfunc{
+position: fixed;
+right:0;
+top:400px;
+}
+
+/*分类*/
+.classmain{left: 15%; margin-right:15%; width:70%;  margin:0px auto; text-align:center; padding-top:5px; padding-bottom:10px; margin-top:40px;}
+.class_main{ float:left; margin:10px auto; text-align:center; widows:100%; }
+.class_main_1{ width:20%; background:#FFF; border:#CCC 1px solid; height:70px; }
+.class_pic{ width:50%; height:auto; float:left; margin:5px auto; padding-left:5px;}
+.class_text{ width:20%; font-family:"微软雅黑"; font-size:12px; color:#666; float:left; text-align:center; height:70px; line-height:20px; padding-top:10px;}
+
+/*.d1{background-color:#3366CC;
+float:left;
+color:#FF0000;
+width:200px;
+height:100px;}*/

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>物品详情</title>
+
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name = "format-detection" content = "telephone=no">
+    
+	<link type="text/css" href="css/css.css" rel="stylesheet" >
+	<link type="text/css" href="css/style.css" rel="stylesheet" />
+
+ <script type="text/javascript">  
+    //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com  
+    //stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari  
+    if(("standalone" in window.navigator) && window.navigator.standalone){  
+        var noddy, remotes = false;  
+        document.addEventListener('click', function(event) {  
+            noddy = event.target;
+            while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {  
+                noddy = noddy.parentNode;  
+            }  
+            if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))  
+            {  
+                event.preventDefault();  
+                document.location.href = noddy.href;  
+            }  
+        },false);  
+    }  
+  </script> 
+    
+</head>
+<body>
+<!--网页头部栏-->
+	<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+    	<tr>
+        	<td width="10%" class="nav_left1"><a  href='javascript:window.history.go(-1)'><</a></td>
+            <td width="80%" class="nav_title">产品详情</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+    </div>
+<!--网页中间部分-->
+		<div class="bodymain">
+    	<div>
+    		<!--此部分需要读取数据库中产品图片-->
+    		<ul class="slides"></ul>
+			
+    	</div>
+        <div class="cp">
+        	<div class="cp_left">
+        		<!--此部分需要读取数据库中产品名-->
+            	<ul id="name"></ul>
+
+            </div>
+            <!--此部分需要读取数据库中产品价格-->
+            <div class="cp_right">
+           <ul id="price"></ul>
+            </div>
+        </div>
+<!--加入购物车-->
+        <div class="btn" >
+            <table width="100%" border="0" cellspacing="0">
+                <tr>
+                    <td class="btn1">
+                        <input type="button" value="加入购物车" onclick="javascript:addtocart()" class="btn2" style="cursor:pointer"></a>
+                    </td>
+
+            </table>
+        </div>
+
+<!--此部分需要读取数据库中联系人姓名，电话，qq，位置等-->
+             <table width="100%" border="0" cellspacing="0" class="my_n">   
+                <tr>
+                    <td class="my_main_p"><ul id="prodid" style="color=#fff;"></ul></td>
+                    <td class="my_mainn_p"></td>
+                </tr>
+                <tr>
+                    <td class="my_main_p"><ul id="stoke"></ul></a></td>
+                    <td class="my_mainn_p"></td>
+                </tr>
+                <tr>
+                    <td class="my_main_p"><ul id="sales"></ul></a></td>
+                    <td class="my_mainn_p"></td>
+                </tr>
+            </table>
+
+<!--此部分需要读取数据库中产品描述-->
+        <div class="nr">
+        	
+        	<span>产品描述： </span>
+			
+			<p><ul id="description"></ul></p>
+			<!--<p>免费升级到一线大牌金河田智能芯3200  额定300W电源 ，7*24小时长时间工作无故障运行，全方位的保护您的主机。金河田是全国最大的机电厂商之一，电流更纯净，性能更稳定。认准知名品牌，信赖100%！</p>
+			<p>500G机械硬盘免费升级到国内一线老品牌太阳花 128G固态硬盘，提速不提价！让您随时体会飞一般的感觉。</p>-->
+	</div>
+		
+	
+
+        
+
+<!--网页底部栏-->
+<div class="juli">
+    &nbsp
+    <br>
+    &nbsp
+	<br>
+	&nbsp
+</div>
+<div>
+    <table width="100%" border="0" cellspacing="0" class="nav">
+        <tr>
+            <td width="25" class="foot"><a href="index.html"><img src="img/function.png" width="20%" height="auto"/><p>分类</p></a></td>
+            <td width="25" class="foot"><a href="addgoods.html"><img src="img/addgoods.png" width="20%" height="auto"/><p>发布</p></a></td> 
+            <td width="25" class="foot"><a href="shopcard.html"><img src="img/shopcard.png" width="20%" height="auto"/><p>购物车</p></a></td>
+            <td width="25" class="foot"><a href="member.html"><img src="img/myself.png" width="20%" height="auto"/><p>我的</p></a></td>
+        </tr>
+    </table>
+</div>
+<script src="js/jquery.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+<script type="text/javascript">
+	var thisURL = document.URL;    
+ 	var  getval =thisURL.split('?')[1];  
+	var showval= getval.split("=")[1]; 
+	var PRODID;
+	window.onload=function(){
+      	$.ajax({
+            url: "http://libkindle.com:8080/WebSell/ProductServlet",
+            type: 'GET',
+            dataType: 'json',
+            data: {
+					prodid:showval
+            },
+            success: function(data,status,xhr) {
+			if(data.code==0){			
+					
+					$("#prodid").append("产品ID:  "+data.prodid)
+					window.PRODID=data.prodid;
+					console.log(data.prodid);
+           			$("#name").append(data.name)
+					$("#price").append("￥"+data.price)
+					<!--$("#imgurl").append(data.imgurl)
+					$(".slides").append("<li><img src='"+data.imgurl.replace('icon','upload')+"' width='100%' height='auto' /></li>")
+					$("#stoke").append("数量:    "+data.stoke)					
+					$("#description").append(data.description);
+					$("#sales").append("销量:    "+data.sales);
+					//alert("获取信息成功");
+			}else
+			{		
+				console.log(data.msg);
+			}
+            },
+            error: function() {
+            	alert(data.msg);
+            	window.location.href = "#";
+            },
+        });
+    };
+	
+	
+	
+	
+	
+		function addtocart(){
+      	$.ajax({
+            url: "http://libkindle.com:8080/WebSell/CartServlet",
+            type: 'GET',
+            dataType: 'json',
+            data: {
+				action:"incProd",
+            	prodid:PRODID
+
+            },
+            success: function(data,status,xhr) { 
+				if(data.code==0){
+				console.log(PRODID);
+				alert(data.msg);
+				location.href = "shopcard.html";
+				}
+ 				else{
+           			alert(data.msg);
+           			}           		
+            },
+            error: function() {
+            	alert(data.msg);
+            	window.location.href = "#";
+            },
+        });
+    };
+</script>
+</html>

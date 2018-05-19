@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>确认订单</title>
+    <link rel="stylesheet" type="text/css" href="css/shopcar.css">
+    <script type="text/javascript" src="js/auto-size.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+
+    <link type="text/css" href="css/css.css" rel="stylesheet" />
+
+ <script type="text/javascript">  
+    //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com  
+    //stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari  
+    if(("standalone" in window.navigator) && window.navigator.standalone){  
+        var noddy, remotes = false;  
+        document.addEventListener('click', function(event) {  
+            noddy = event.target;
+            while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {  
+                noddy = noddy.parentNode;  
+            }  
+            if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))  
+            {  
+                event.preventDefault();  
+                document.location.href = noddy.href;  
+            }  
+        },false);  
+    }  
+  </script> 
+    
+</head>
+<body>
+<!--网页头部栏-->
+    <div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1"><a  href='javascript:window.history.go(-1)'><</a></td>
+            <td width="80%" class="nav_title">确认订单</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+    </div>
+<!--填写地址-->
+
+<div class="xiadan">
+    
+        <div class="xiadanmain">
+            <p style='font-size:16px ' >请填写收货人信息：</p>
+            <table >
+                
+                <tr>
+                    <td class="xiadantext"><input type="text/css" class="xiadantext1" id="maijiausername" placeholder="收货人姓名"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table >
+                <tr>
+                    <td class="xiadantext"><input type="text/css" class="xiadantext1" id="maijiaphone" placeholder="收货人电话"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+            <table >
+                <tr>
+                    <td class="xiadantext"><input type="text/css" class="xiadantext1" id="maijialocation" placeholder="收货地址"/></td>
+                </tr>
+            </table>
+            <div class="linee"></div>
+
+        </div>
+
+<div class="xiadanjiange">
+    &nbsp
+</div>
+<!--购物车-->        
+<div class="maijialan">
+    <div class="display">
+    卖家：  张博涵    >
+    </div>
+</div>
+    <div class="lb">
+        <img style="margin-left: 25px" src="img/spt.jpg" class="spt">
+        <div class="mid">
+            <p class="name" style="text-align: center">韩国正品自然乐园芦荟补水保湿洗面奶男士女控油</p>
+            <p class="color">颜色:白色</p>
+
+        </div>
+        <div class="jgq">
+            <div class="price"><p>￥<span class="pri">11.00</span></p></div>
+        </div>
+    </div>
+    
+    </div>
+    <div class="fix_bottom">
+        
+        
+        <a id="js">确认订单</a>
+    </div>
+
+<div class="juli">
+    &nbsp
+    <br>
+    &nbsp
+</div>
+<!--网页底部栏-->
+<div>
+    <table width="100%" border="0" cellspacing="0" class="nav">
+        <tr>
+            <td width="25" class="foot"><a href="index.html"><img src="img/function.png" width="30%" height="auto"/><p>分类</p></a></td>
+            <td width="25" class="foot"><a href="addgoods.html"><img src="img/addgoods.png" width="30%" height="auto"/><p>发布</p></a></td> 
+            <td width="25" class="foot"><a href="shopcard.html"><img src="img/shopcard.png" width="30%" height="auto"/><p>购物车</p></a></td>
+            <td width="25" class="foot"><a href="member.html"><img src="img/myself.png" width="30%" height="auto"/><p>我的</p></a></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript" src="scripts.js"></script>
+
+</body>
+</html>
