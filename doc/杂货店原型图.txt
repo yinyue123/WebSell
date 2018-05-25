@@ -1,0 +1,409 @@
+杂货店原型图
+
+界面部分
+	有个库叫Bootstrap，简单配置可以让页面适用于手机，平板，电脑(重点：自适应)，非常好用，界面非常美
+	有了Bootstrap，那个jQuery mobi可能用不上，Bootstrap用的网站也不少，一般漂亮的自适应网站一般离不开它
+	例子：Shindo写过一个GPA计算器http://shindo.sinaapp.com/gpa
+	例子2：群里发的那个程序源码就是用了Bootstrap
+	教程：http://www.runoob.com/bootstrap/bootstrap-tutorial.html
+*为将来扩展的功能
+主框架
+首页
+	头部
+		地区
+		搜索条
+		搜索按钮
+	筛选器
+		展示商品
+		展示店铺
+		过滤器
+			价格排序(*价格区间)
+			*距离排序(距离区间)
+			综合
+			评分最高
+			销量最高
+			最新上架
+	活动
+		活动广告
+订单
+	买
+		处理中(已接单，发货中，退货中)
+		选购中(相当于购物车)
+		已完成
+	卖
+		处理中(待接单，已接单，发货中，退货中)
+		已完成
+发布
+消息
+	最近联系
+	好友列表
+	动态列表
+我的
+	我的资料
+		头像
+		昵称
+		介绍
+	我的地址
+		备注(家/单位/学校)
+		地址
+		联系人
+		电话
+	*我的卡券
+		暂无
+	账号安全
+		重置密码
+	*通用设置
+		暂无
+	我的评价
+		我发出的
+		我收到的
+	*我的会员
+		暂无
+
+实现
+店铺列表
+	图片
+	名称
+	介绍
+	*活动
+	*浏览量
+	*距离
+	*等级
+	*评分
+产品列表
+	图片
+	名称
+	介绍
+	价格
+	*活动
+	*浏览量
+	*距离
+	*库存
+	*等级
+	*评分
+	加入
+发布
+	店铺头像
+	店铺名称
+	店铺介绍
+	产品列表
+		名称
+		图片
+		详情
+		价格
+		*库存
+		确定
+		新增
+店铺门面
+	头部
+		图片
+		名称
+		介绍
+		活动
+		距离
+		*浏览量
+		*距离
+		*库存
+		*等级
+		评分
+	筛选器
+		综合
+		最火
+		最新
+		最贵
+		最便宜
+	产品
+		图片
+		介绍
+		*库存
+		*评分
+		*评价
+		加入
+	*评价
+		*好评
+			*用户名
+			*产品名
+			*评价
+			*图片
+		*中评
+		*差评
+	店铺详情
+		介绍
+		默认位置
+		*活动
+		*浏览量
+		*距离
+		*等级
+		评分
+下订单
+	见面位置
+	见面时间
+	数量
+	备注
+	*优惠卡券
+	总价格
+	约定价格
+	确定
+订单详情
+	见面位置
+	见面时间
+	数量
+	备注
+	*优惠卡券
+	总价格
+	约定价格
+	确认
+登录
+	用户名(列表)
+	密码
+	登录
+注册
+	用户名
+	密码
+	确认密码
+	昵称
+	*邮箱
+	*手机
+	*微信/QQ
+	验证码(暂无)
+	注册
+*找回密码
+	用户名
+	*邮箱
+	*手机
+	*微信/QQ
+	*验证码
+	确认
+重置密码
+	新密码
+	确认密码
+	确认
+
+交互部分
+	技术要求：
+		ftl：
+			http://blog.csdn.net/u010147288/article/details/51489896
+		WebSocket主要接受聊天信息,因此切换页面要保持长连接
+			参考范例：http://blog.csdn.net/xxg1209535639/article/details/78863292
+		所有数据均ajax滑动动态加载，订单，聊天记录
+			范例：http://www.jb51.net/article/86065.htm
+				 https://www.oschina.net/code/snippet_1262999_24706
+		输入带自动检查提示功能，注册的时候输入完毕检测用户名是否可用，密码安全等级合法
+			范例：http://blog.csdn.net/ylxb2/article/details/53337252
+				 https://www.cnblogs.com/pengsixiong/p/4922969.html
+		主界面页面设计在一个网页中，使用jQuery实现滑动效果
+			范例：http://www.jq22.com/jquery-info10583
+		左滑返回
+			范例：https://www.cnblogs.com/libin-1/p/5753926.html
+
+获取商品列表
+GET /product/list?orderby=price(,all,amount,newest,score)?search=自行车?page=1
+返回
+{
+	"code":0
+	"msg":"成功"
+	"data":[
+		{
+			"id": 1,
+			"name": "自行车",
+			"price:" 100.0,
+			"description": "车闸灵敏,拐弯灵活,还能骑几年",
+			"icon":"http://123.com/1.ico",
+		},
+		{
+			"id": 2,
+			"name": "吹风机",
+			"price:" 50.0,
+			"description": "吹头发爽的很,大放血啦",
+			"icon":"http://123.com/1.ico",
+		}
+	]
+}
+
+获取商店列表
+GET /shop/list?search=扛把子?page=1
+返回
+{
+	"code":0
+	"msg":"成功"
+	"data":[
+		{
+			"id": 1,
+			"name": "工大扛把子",
+			"description": "大四学长卖杂货",
+			"icon":"http://123.com/1.ico",
+		},
+		{
+			"id": 2,
+			"name": "小R两元店",
+			"description": "两元钱你买不到吃亏，两元钱你买不到上当",
+			"icon":"http://123.com/1.ico",
+		}
+	]
+}
+
+商店详情
+GET /shop?uid=1?page=1
+返回
+{
+	"code":0,
+	"msg":"成功",
+	"name":"工大扛把子",
+	"description": "大四学长卖杂货",
+	"icon":"http://123.com/1.ico",
+	"data":[
+		{
+			"id": 1,
+			"name": "自行车",
+			"price:" 100.0,
+			"description": "车闸灵敏,拐弯灵活,还能骑几年",
+			"icon":"http://123.com/1.ico",
+		},
+		{
+			"id": 2,
+			"name": "吹风机",
+			"price:" 50.0,
+			"description": "吹头发爽的很,大放血啦",
+			"icon":"http://123.com/1.ico",
+		}
+	]
+}
+
+创建订单
+POST /order/create
+name: "刘斌"
+phone: "110"
+address: "金海滩派出所"
+items: [
+	{
+		productId:"123",
+		productQuantity: 3
+	},{
+		productId:"124",
+		productQuantity: 2
+	}
+]
+返回
+{
+	"code": 0,
+	"msg": "成功",
+	"data": {
+		orderId:"122122"
+	}	
+}
+
+购物车列表
+GET /order/list?page=0
+{
+	"code": 0,
+	"msg": "成功",
+	"data": [
+	{
+		"orderId": "123"
+		"buyerName": "刘斌"
+		"phone": "110"
+		"address": "金海滩派出所"
+		"createTime":20180101
+		"remark": "尽快送达"
+		"state": 1 处理中
+		"data": [{
+			"id": 1,
+			"name": "自行车",
+			"price:" 100.0,
+			"description": "车闸灵敏,拐弯灵活,还能骑几年",
+			"icon":"http://123.com/1.ico",
+		},
+		{
+			"id": 2,
+			"name": "吹风机",
+			"price:" 50.0,
+			"description": "吹头发爽的很,大放血啦",
+			"icon":"http://123.com/1.ico",
+		}]
+	},
+	{
+		"state":0 未下单
+		"data": [{
+			"id": 1,
+			"name": "自行车",
+			"price:" 100.0,
+			"description": "车闸灵敏,拐弯灵活,还能骑几年",
+			"icon":"http://123.com/1.ico",
+		},]
+	},
+	{
+		"orderId": "123"
+		"buyerName": "刘斌"
+		"phone": "110"
+		"address": "金海滩派出所"
+		"createTime":20180101
+		"remark": "尽快送达"
+		"state": 2 已完结
+		"data": [{
+			"id": 1,
+			"name": "自行车",
+			"price:" 100.0,
+			"description": "车闸灵敏,拐弯灵活,还能骑几年",
+			"icon":"http://123.com/1.ico",
+		},
+		{
+			"id": 2,
+			"name": "吹风机",
+			"price:" 50.0,
+			"description": "吹头发爽的很,大放血啦",
+			"icon":"http://123.com/1.ico",
+		}]
+	}]
+}
+
+数据库
+物品
+create table 'product_info'(
+	'product_id' varchar(32) not null,
+	'product_name' varchar(64) not null comment '商品名称',
+	'product_price' decimal(8,2) not null comment '单价',
+	'product_stock' int not null comment '库存',
+	'product_description' varchar(128) comment '描述',
+	'product_icon' varchar(256) comment '图片',
+	'product_status' tinyint(3) DEFAULT '0' comment '商品状态,0正常1下架',
+	'create_time' timestamp not null default current_timestamp comment '创建时间',
+	'update_time' timestamp not null default current_timestamp on update current_timestamp comment '修改时间',
+	primary key ('product_id')
+)
+
+订单
+create table 'order_master'(
+	'order_id' varchar(32) not null,
+	'buyer_name' varchar(32) not null comment '买家名字',
+	'buyer_phone' varchar(32) not null comment '买家电话',
+	'buyer_address' varchar(128) not null comment '买家地址',
+	'order_ammount' decimal(8,2) not null comment '订单总金额',
+	'order_status' tinyint(3) not null default '0' comment '订单状态',
+	'create_time' timestamp not null default current_timestamp comment '创建时间',
+	'update_time' timestamp not null default current_timestamp on update current_timestamp comment '修改时间',
+	primary key ('order_id')
+)
+
+订单商品
+create table 'order_detail'{
+	'detail_id' varchar(32) not null,
+	'order_id' varchar(32) not null,
+	'product_name' varchar(64) not null comment '商品名称',
+	'product_price' decima(8,2) not null comment '购买时的价格',
+	'create_time' timestamp not null default current_timestamp comment '创建时间',
+	'update_time' timestamp not null default current_timestamp on update current_timestamp comment '修改时间',
+	primary key ('detail_id'),
+	key 'idx_order_id' ('order_id')
+}
+
+用户
+create table 'user' (
+	'id' varchar(32) not null,
+	'username' varchar(32) not null,
+	'password' varchar(32) not null,
+	'create_time' timestamp not null default current_timestamp comment '创建时间',
+	'update_time' timestamp not null default current_timestamp on update current_timestamp comment '修改时间',
+	primary key('id')
+);
+
+
